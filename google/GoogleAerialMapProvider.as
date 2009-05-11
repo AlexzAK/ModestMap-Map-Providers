@@ -2,9 +2,6 @@ package com.modestmaps.mapproviders.google
 {
     import com.modestmaps.core.Coordinate;
     import com.modestmaps.mapproviders.IMapProvider;
-    import com.modestmaps.util.BinaryUtil;
-
-    import flash.system.ApplicationDomain;
 
     /**
      * @author darren
@@ -31,7 +28,9 @@ package com.modestmaps.mapproviders.google
             var GetX : int = coord.column;
             var GetY : int = coord.row;
             var GetZ : int = coord.zoom;
-            return [ UrlBase + "&x=" + GetX + "&y=" + GetY + "&z=" + (GetZ)];
+            
+            var Galileo : String = String("Galileo").substr(0, (GetX*3+GetY) % 8);   
+            return [ UrlBase + "&x=" + GetX + "&y=" + GetY + "&z=" + GetZ + "&s=" + Galileo ];
         }
     }
 }
